@@ -3,108 +3,141 @@
 <head>
 <title>For Pavithra ❤️</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
 body {
     margin:0;
-    font-family: 'Segoe UI', sans-serif;
+    font-family:'Segoe UI', sans-serif;
     text-align:center;
-    background: linear-gradient(to right, #ff9a9e, #fad0c4);
-    overflow-x:hidden;
+    background: linear-gradient(to right,#ff758c,#ff7eb3);
     color:white;
 }
 
-h1 {
-    margin-top:80px;
-    font-size:40px;
+/* Password Page */
+#passwordPage {
+    margin-top:150px;
 }
 
-.section {
-    padding:60px 20px;
+input {
+    padding:10px;
+    border:none;
+    border-radius:20px;
+    width:200px;
+    text-align:center;
 }
 
 button {
-    padding:15px 30px;
-    font-size:18px;
+    padding:12px 25px;
     border:none;
-    border-radius:30px;
+    border-radius:25px;
     background:white;
     color:#ff4e8a;
     cursor:pointer;
-    transition:0.3s;
+    margin-top:10px;
 }
 
-button:hover {
-    transform:scale(1.1);
+/* Main Content */
+#mainContent {
+    display:none;
+}
+
+img {
+    width:80%;
+    max-width:350px;
+    border-radius:20px;
+    margin:15px 0;
 }
 
 .heart {
     position:fixed;
     top:-10px;
-    color:red;
     animation: fall linear forwards;
 }
 
 @keyframes fall {
-    to {
-        transform: translateY(100vh);
-    }
+    to { transform: translateY(100vh); }
 }
 </style>
 </head>
 
 <body>
 
-<h1>For My Dearest Pavithra ❤️</h1>
-<p>You are my happiness, my peace, my forever.</p>
-
-<div class="section">
-    <h2>Our Beautiful Memory 🌸</h2>
-    <p>Being with you is my favorite place in this world.</p>
+<!-- PASSWORD PAGE -->
+<div id="passwordPage">
+    <h1>Private For Pavithra 🔐❤️</h1>
+    <p>Enter our special password</p>
+    <input type="password" id="passwordInput" placeholder="Enter password">
+    <br>
+    <button onclick="checkPassword()">Unlock 💕</button>
+    <p id="error"></p>
 </div>
 
-<div class="section">
-    <h2>A Letter To You 💌</h2>
-    <p>
-    Pavithra,  
-    Every moment with you feels magical.  
-    Your smile brightens my darkest days.  
-    I promise to stand by you, cherish you,  
-    and love you more with each passing day.  
-    You are my forever Valentine. ❤️
-    </p>
+<!-- MAIN WEBSITE -->
+<div id="mainContent">
+
+<h1>For My Forever, Pavithra ❤️</h1>
+<p>You are my favorite place in this world.</p>
+
+<h2>Our Memories 📸</h2>
+<img src="photo1.jpg">
+<img src="photo2.jpg">
+<img src="photo3.jpg">
+<img src="photo4.jpg">
+<img src="photo5 jpg">   
+
+<h2>Why I Love You 🌸</h2>
+<p>
+❤️ Your smile<br>
+❤️ Your kindness<br>
+❤️ The peace I feel with you<br>
+❤️ Everything about you
+</p>
+
+<h2>Click Below 💍</h2>
+<button onclick="proposal()">Click For Surprise 🎁</button>
+<h1 id="proposalText"></h1>
+
 </div>
 
-<div class="section">
-    <button onclick="surprise()">Click For Surprise 🎁</button>
-    <h2 id="message"></h2>
-</div>
-
-<audio autoplay loop>
-  <source src="your-song.mp3" type="audio/mpeg">
+<audio id="bgMusic" loop>
+  <source src="song.mp3" type="audio/mpeg">
 </audio>
 
 <script>
-function surprise() {
-    document.getElementById("message").innerHTML =
-    "Will you be my forever, Pavithra? ❤️✨";
+
+/* Change this password */
+const correctPassword = "06/12/2022";
+
+function checkPassword() {
+    const input = document.getElementById("passwordInput").value;
+    if(input === correctPassword){
+        document.getElementById("passwordPage").style.display="none";
+        document.getElementById("mainContent").style.display="block";
+        document.getElementById("bgMusic").play();
+    } else {
+        document.getElementById("error").innerHTML="Wrong password 😜 Try again!";
+    }
+}
+
+function proposal(){
+    document.getElementById("proposalText").innerHTML =
+    "Pavithra 💍 Will You Be Mine Forever? ❤️✨";
     confetti();
 }
 
-function confetti() {
-    for (let i = 0; i < 100; i++) {
-        let heart = document.createElement("div");
-        heart.innerHTML = "❤️";
+function confetti(){
+    for(let i=0;i<120;i++){
+        let heart=document.createElement("div");
+        heart.innerHTML="❤️";
         heart.classList.add("heart");
-        heart.style.left = Math.random() * 100 + "vw";
-        heart.style.animationDuration = Math.random() * 3 + 2 + "s";
-        heart.style.fontSize = Math.random() * 20 + 10 + "px";
+        heart.style.left=Math.random()*100+"vw";
+        heart.style.animationDuration=Math.random()*3+2+"s";
+        heart.style.fontSize=Math.random()*20+10+"px";
         document.body.appendChild(heart);
-
-        setTimeout(() => {
-            heart.remove();
-        }, 5000);
+        setTimeout(()=>{heart.remove();},5000);
     }
 }
+
 </script>
 
 </body>
